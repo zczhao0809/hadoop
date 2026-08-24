@@ -62,10 +62,10 @@ class ReadOp extends Operation {
   @Override // Operation
   List<OperationOutput> run(FileSystem fs) {
     List<OperationOutput> out = super.run(fs);
+    Path fn = getReadFile();
     long opStart = beginOpTime();
     DataInputStream is = null;
     try {
-      Path fn = getReadFile();
       Range<Long> readSizeRange = getConfig().getReadSize();
       long readSize = 0;
       String readStrAm = "";

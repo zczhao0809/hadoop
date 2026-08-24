@@ -60,10 +60,10 @@ class AppendOp extends Operation {
   @Override // Operation
   List<OperationOutput> run(FileSystem fs) {
     List<OperationOutput> out = super.run(fs);
+    Path fn = getAppendFile();
     long opStart = beginOpTime();
     OutputStream os = null;
     try {
-      Path fn = getAppendFile();
       // determine file status for file length requirement
       // to know if should fill in partial bytes
       Range<Long> appendSizeRange = getConfig().getAppendSize();

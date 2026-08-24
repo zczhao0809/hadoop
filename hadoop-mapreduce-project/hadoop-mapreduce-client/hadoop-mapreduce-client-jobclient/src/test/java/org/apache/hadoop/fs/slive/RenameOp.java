@@ -82,10 +82,9 @@ class RenameOp extends Operation {
   @Override // Operation
   List<OperationOutput> run(FileSystem fs) {
     List<OperationOutput> out = super.run(fs);
+    SrcTarget targets = getRenames();
     long opStart = beginOpTime();
     try {
-      // find the files to modify
-      SrcTarget targets = getRenames();
       Path src = targets.getSrc();
       Path target = targets.getTarget();
       LOG.info("Renaming " + src + " to " + target);

@@ -59,9 +59,9 @@ class TruncateOp extends Operation {
   @Override // Operation
   List<OperationOutput> run(FileSystem fs) {
     List<OperationOutput> out = super.run(fs);
+    Path fn = getTruncateFile();
     long opStart = beginOpTime();
     try {
-      Path fn = getTruncateFile();
       boolean waitOnTruncate = getConfig().shouldWaitOnTruncate();
       FileStatus fileStatus = fs.getFileStatus(fn);
       long currentSize = fileStatus.getLen();

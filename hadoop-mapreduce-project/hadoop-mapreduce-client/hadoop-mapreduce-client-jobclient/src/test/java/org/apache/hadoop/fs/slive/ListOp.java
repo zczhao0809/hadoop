@@ -60,9 +60,9 @@ class ListOp extends Operation {
   @Override // Operation
   List<OperationOutput> run(FileSystem fs) {
     List<OperationOutput> out = super.run(fs);
+    Path dir = getDirectory();
     long opStart = beginOpTime();
     try {
-      Path dir = getDirectory();
       long dirEntries = 0;
       long timeTaken = 0;
       {

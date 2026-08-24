@@ -56,9 +56,9 @@ class DeleteOp extends Operation {
   @Override // Operation
   List<OperationOutput> run(FileSystem fs) {
     List<OperationOutput> out = super.run(fs);
+    Path fn = getDeleteFile();
     long opStart = beginOpTime();
     try {
-      Path fn = getDeleteFile();
       LOG.info("Deleting file: " + fn);
       long timeTaken = 0;
       boolean deleteStatus = false;
